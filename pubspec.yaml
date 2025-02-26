@@ -1,0 +1,33 @@
+name: get_country_apk
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  bloc: ^9.0.0 # permet de mettre en place le design parttern BLoC
+  flutter_bloc: ^9.0.0 #dépendance de BLoC
+  dio: ^5.7.0 # améliore la couche des requêtes HTTP
+  dio_cache_interceptor: ^3.5.0
+  dio_cache_interceptor_hive_store: ^4.0.0
+  equatable: ^2.0.5 # comparer les états (dépendance BLoC)
+  google_fonts: ^6.2.1 # permet d'utiliser les fonts google
+  font_awesome_flutter: ^10.6.0  # permet d'utiliser les fonts awesome
+  url_launcher: ^6.2.1 # permet de lancer des URLs
+  firebase_core: ^3.12.0
+  firebase_auth: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  json_serializable: ^6.7.1
+
+
+flutter:
+  uses-material-design: true

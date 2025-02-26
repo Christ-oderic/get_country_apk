@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60795356473",
+    "project_id": "restcountryapiapk",
+    "storage_bucket": "restcountryapiapk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60795356473:android:a2f4330d5cdcb5ce0a94e8",
+        "android_client_info": {
+          "package_name": "com.example.get_country_apk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmwF2rMJL6FD2MgnGrkDcGnNcFMtConxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
