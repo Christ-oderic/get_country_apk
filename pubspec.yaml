@@ -21,6 +21,9 @@ dependencies:
   url_launcher: ^6.2.1 # permet de lancer des URLs
   firebase_core: ^3.12.0
   firebase_auth: ^5.0.0
+  shared_preferences: ^2.2.2  # Added for storing first-time app launch status
+  dots_indicator: ^4.0.1
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +34,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+
+assets:
+  - assets/
