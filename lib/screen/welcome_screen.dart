@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_country_apk/blocs/welcome/welcome_bloc.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -26,14 +27,15 @@ class WelcomeScreen extends StatelessWidget {
                       children: [
                         _page(1, context, 'Welcome', 'assets/earthFromSpace.png'),
                         _page(2, context, 'Welcome', 'assets/worldMap.png'),
+                        _page(3, context, 'Welcome', 'assets/earthFromSpaceOnAfrica.png'),
                       ],
                       
                     ),
                     Positioned(
-                      bottom: 0,
+                      bottom: 100.h,
                       child: DotsIndicator(
                         position: pageController.initialPage.toDouble(),
-                        dotsCount: 2,
+                        dotsCount: 3,
                         mainAxisAlignment: MainAxisAlignment.center,
                         decorator: DotsDecorator(
                           color: Colors.grey,
