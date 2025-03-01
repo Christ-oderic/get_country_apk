@@ -15,7 +15,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   Future<void> _onLoadWelcomePage(WelcomeEvent event, Emitter<WelcomeState> emit) async {
     try {
       emit(WelcomeLoadedState());
-      final bool isFirstTime = await _checkIfFirstTime();
+      final bool isFirstTime = true;
       emit(WelcomeLoadedState(isFirstTime: isFirstTime));
     } catch (e) {
       emit(WelcomeErrorState(errorMessage: 'Failed to load welcome page:${e.toString()}'));
@@ -36,14 +36,14 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     }
   }
 
-  Future<bool> _checkIfFirstTime() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      return prefs.getBool('isFirstTime') ?? true;
-    } catch (e) {
-      return true;
-    }
+  // Future<bool> _checkIfFirstTime() async {
+  //   try {
+  //     final prefs = await SharedPreferences.getInstance();
+  //     return prefs.getBool('isFirstTime') ?? true;
+  //   } catch (e) {
+  //     return true;
+  //   }
     
-  }
+  // }
 
 }
