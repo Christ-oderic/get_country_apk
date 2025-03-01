@@ -13,11 +13,12 @@ final class WelcomeLoadingState extends WelcomeState {}
 
 final class WelcomeLoadedState extends WelcomeState {
   final bool isFirstTime;
+  final int currentPage;
 
-  const WelcomeLoadedState({this.isFirstTime = true});
+  const WelcomeLoadedState({this.isFirstTime = true, this.currentPage = 0});
 
   @override
-  List<Object> get props => [isFirstTime];
+  List<Object> get props => [isFirstTime, currentPage];
 }
 
 final class WelcomeErrorState extends WelcomeState {

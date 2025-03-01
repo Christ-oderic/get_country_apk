@@ -10,6 +10,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     on<LoadWelcomePageEvent>(_onLoadWelcomePage);
     on<NavigateFromWelcomeEvent>(_onNavigateFromWelcome);
     on<MarkAppAsOpenedEvent>(_onMarkAppAsOpenedEvent); 
+    on<UpdateWelcomePageEvent>(_onUpdateWelcomePage);
   }
 
   Future<void> _onLoadWelcomePage(WelcomeEvent event, Emitter<WelcomeState> emit) async {
@@ -36,6 +37,15 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     }
   }
 
+Future<void> _onUpdateWelcomePage(UpdateWelcomePageEvent event, Emitter<WelcomeState> emit) async {
+  if (state is WelcomeLoadedState) {
+    final currentState = state as WelcomeLoadedState;
+    emit(WelcomeLoadedState(
+      isFirstTime: currentState.isFirstTime, 
+      currentPage: event.pageIndex
+    ));
+  }
+}
   // Future<bool> _checkIfFirstTime() async {
   //   try {
   //     final prefs = await SharedPreferences.getInstance();

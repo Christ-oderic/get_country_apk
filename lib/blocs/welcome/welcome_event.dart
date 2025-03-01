@@ -19,3 +19,11 @@ class NavigateFromWelcomeEvent extends WelcomeEvent {
 }
 
 class MarkAppAsOpenedEvent extends WelcomeEvent {}
+class UpdateWelcomePageEvent extends WelcomeEvent {
+  final int pageIndex;
+
+  const UpdateWelcomePageEvent(this.pageIndex);
+
+  @override
+  List<Object> get props => [pageIndex];
+}
