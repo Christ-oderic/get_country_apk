@@ -20,6 +20,7 @@ dependencies:
   font_awesome_flutter: ^10.6.0  # permet d'utiliser les fonts awesome
   url_launcher: ^6.2.1 # permet de lancer des URLs
   firebase_core: ^3.12.0
+  cloud_firestore: ^5.6.5
   firebase_auth: ^5.0.0
   shared_preferences: ^2.2.2  # Added for storing first-time app launch status
   dots_indicator: ^4.0.1
