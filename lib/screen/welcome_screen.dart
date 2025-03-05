@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_country_apk/blocs/welcome/welcome_bloc.dart';
 import 'package:get_country_apk/common/colors.dart';
+import 'package:get_country_apk/screen/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -128,6 +129,9 @@ class WelcomeScreen extends StatelessWidget {
           }else {
             context.read<WelcomeBloc>().add(MarkAppAsOpenedEvent());
             // Navigator.pushNamed(context, '/home');
+            Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const LoginScreen())
+            );
           }
         },
         child: Container(

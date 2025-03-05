@@ -16,7 +16,7 @@ class UserRepository {
   Future<UserModel?> singUp({
     required String email,
     required String password,
-    required String username
+    String? username
   }) async {
     try {
 

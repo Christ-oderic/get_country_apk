@@ -25,7 +25,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final user = await _userRepository.singUp(
         email: event.email,
         password: event.password,
-        username: event.username 
       );
       if (user != null) {
         emit(AuthAuthenticated(user: user));
