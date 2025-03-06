@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_country_apk/blocs/auth/auth_bloc.dart';
+import 'package:get_country_apk/common/colors.dart';
 import 'package:get_country_apk/repositories/user_repository.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
     // final TextEditingController usernameController = TextEditingController();
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return Scaffold(
+      backgroundColor: AppColors.primaryBackground,
       body: BlocProvider(
         create: (context) => AuthBloc(
           userRepository: UserRepository()
@@ -74,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                           );
                         }
                       },
-                      child: const Text('Insription'),
+                      child: const Text('Inscription'),
                     )
                   ]
                 )
