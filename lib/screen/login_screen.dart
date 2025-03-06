@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     // final TextEditingController usernameController = TextEditingController();
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: BlocProvider(
@@ -33,10 +33,15 @@ class LoginScreen extends StatelessWidget {
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               return Form(
-                key: _formKey,
+                key: formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Image.asset(
+                      'assets/loginForApp.png', 
+                      height: 400, 
+                      fit: BoxFit.cover, 
+                    ),
                     TextFormField(
                       controller: emailController,
                       decoration: const InputDecoration(
@@ -54,30 +59,41 @@ class LoginScreen extends StatelessWidget {
                         value == null || value.isEmpty ? 'Veuillez entrer votre mot de passe' : null,
                       obscureText: true,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<AuthBloc>().add(
-                            SignInRequestedEvent(email: emailController.text.trim(), password: passwordController.text.trim()
-                            )
-                          );
-                        }
-                      },
-                      child: const Text('Se connecter'),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 70.0, left: 70.0, top: 10.0),
+                      child: Row(
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              
+                            ),
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthBloc>().add(
+                                  SignInRequestedEvent(email: emailController.text.trim(), password: passwordController.text.trim()
+                                  )
+                                );
+                              }
+                            },
+                            child: const Text('Se connecter'),  
+                          ),     
+                          SizedBox(width: 10,),                   
+                          ElevatedButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthBloc>().add(
+                                SignUpRequestedEvent(
+                                  email: emailController.text.trim(), 
+                                  password: passwordController.text.trim()
+                                )
+                              );
+                              }
+                            },
+                            child: const Text('Inscription'),
+                          )
+                        ],
+                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<AuthBloc>().add(
-                            SignUpRequestedEvent(
-                              email: emailController.text.trim(), 
-                              password: passwordController.text.trim()
-                            )
-                          );
-                        }
-                      },
-                      child: const Text('Inscription'),
-                    )
                   ]
                 )
               );

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_country_apk/blocs/welcome/welcome_bloc.dart';
 import 'package:get_country_apk/common/colors.dart';
 import 'package:get_country_apk/screen/login_screen.dart';
+import 'package:get_country_apk/utils/welcome_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,18 +28,29 @@ class WelcomeScreen extends StatelessWidget {
                         context.read<WelcomeBloc>().add(UpdateWelcomePageEvent(index));
                       },
                       children: [
-                        _page(1, context, 
-                        "BIENVENUE DANS GEOQUIZ!","assets/earthFromSpace.png",
-                        "Es-tu prêt à explorer le monde et à défier tes connaissances sur les pays ?", 
-                        "Next",pageController),
-                        _page(2, context, 
-                        'Choisis un mode de jeu!','assets/worldMap.png',
-                        'Réponds aux questions le plus vite possible ⏳,Gagne des points et grimpe dans le classement ! 🏆', 
-                         'Next', pageController),
-                        _page(3, context, 
-                        'Es-tu prêt à relever le défi ?','assets/earthFromSpaceOnAfrica.png',
-                        ' Let\'s go 🚀', 
-                         'Get Started',pageController),
+                        WelcomePage(
+                          index: 1, 
+                          title:'BIENVENUE DANS GEOQUIZ', 
+                          imagePath: "assets/earthFromSpace.png",
+                          subtitle: "Es-tu prêt à explorer le monde et à défier tes connaissances sur les pays ?",
+                          buttonText: "Next",
+                          pageController: pageController),
+                        WelcomePage(
+                          index: 2,
+                          title: 'Choisis un mode de jeu!',
+                          imagePath: 'assets/worldMap.png',
+                          subtitle: 'Réponds aux questions le plus vite possible ⏳,Gagne des points et grimpe dans le classement ! 🏆',
+                          buttonText: 'Next',
+                          pageController: pageController
+                        ),
+                        WelcomePage(
+                          index: 3,
+                          title:'Es-tu prêt à relever le défi ?',
+                          imagePath: 'assets/earthFromSpaceOnAfrica.png',
+                          subtitle: ' Let\'s go 🚀', 
+                          buttonText: 'Start',
+                          pageController: pageController
+                        ),
                       ],
                       
                     ),
