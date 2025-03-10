@@ -1,11 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_country_apk/blocs/welcome/welcome_bloc.dart';
 import 'package:get_country_apk/common/colors.dart';
-import 'package:get_country_apk/screen/login_screen.dart';
-import 'package:get_country_apk/utils/welcome_page.dart';
+import 'package:get_country_apk/utils/welcome_page_utils.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -28,14 +26,14 @@ class WelcomeScreen extends StatelessWidget {
                         context.read<WelcomeBloc>().add(UpdateWelcomePageEvent(index));
                       },
                       children: [
-                        WelcomePage(
+                        WelcomePageUtils(
                           index: 1, 
                           title:'BIENVENUE DANS GEOQUIZ', 
                           imagePath: "assets/earthFromSpace.png",
                           subtitle: "Es-tu prêt à explorer le monde et à défier tes connaissances sur les pays ?",
                           buttonText: "Next",
                           pageController: pageController),
-                        WelcomePage(
+                        WelcomePageUtils(
                           index: 2,
                           title: 'Choisis un mode de jeu!',
                           imagePath: 'assets/worldMap.png',
@@ -43,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                           buttonText: 'Next',
                           pageController: pageController
                         ),
-                        WelcomePage(
+                        WelcomePageUtils(
                           index: 3,
                           title:'Es-tu prêt à relever le défi ?',
                           imagePath: 'assets/earthFromSpaceOnAfrica.png',
@@ -87,95 +85,6 @@ class WelcomeScreen extends StatelessWidget {
         
       }
     );
-  }
-
-
-  Widget _page(int index, BuildContext context, String title, String imagePath,  String subtitle, String buttonText, pageController) {
-  return Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 70),
-        child: SizedBox(width: 345.w,height: 345.w,
-        child:Center(
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-          ),
-        ),),
-      ),
-      Column(
-        children: [
-          SizedBox(height: 20.h),
-          Text(
-            title,
-            style: TextStyle(
-            color: AppColors.primaryText,
-            fontSize: 26,
-            fontWeight: FontWeight.normal,
-            ),
-          ),
-          SizedBox(height: 20.h),
-          Container(
-            width: 375.w,
-            padding: EdgeInsets.only(left: 30.w, right: 30.w),
-            child: Center(
-              child: Text(
-                subtitle,
-                style: TextStyle(
-                  color: AppColors.primarySecondaryElementText,
-                  fontSize: 18,
-                  fontWeight: FontWeight.normal
-                ),
-              ),
-            ),
-          ),
-        ]
-      ),  
-      GestureDetector(
-        onTap: () {
-          if (index < 3) {
-            pageController.nextPage(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeInOut
-            );
-          }else {
-            context.read<WelcomeBloc>().add(MarkAppAsOpenedEvent());
-            // Navigator.pushNamed(context, '/home');
-            Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const LoginScreen())
-            );
-          }
-        },
-        child: Container(
-          margin: const EdgeInsets.only(top: 100, left: 25, right: 25),
-          width: 325.w,
-          height: 50.h,
-          decoration: BoxDecoration(
-            color: AppColors.primaryElement,
-            borderRadius: BorderRadius.all(Radius.circular(15.w)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(0, 1),
-              )
-            ],
-          ),
-          child: Center(
-            child: Text(
-              buttonText,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-          )
-        ),
-      )
-    ],
-  );
   }
 }
 

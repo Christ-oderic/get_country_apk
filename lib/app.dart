@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_country_apk/screen/home_screen.dart';
+import 'package:get_country_apk/screen/login_screen.dart';
     
 import 'blocs/welcome/welcome_bloc.dart';
 import 'screen/welcome_screen.dart';
@@ -16,6 +18,11 @@ class App extends StatelessWidget {
       builder: (_, child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: {
+            '/login': (context) => const LoginScreen(),
+            '/home': (context) => const HomeScreen(),
+          },
           theme: ThemeData(
                 primarySwatch: Colors.blue,
                 visualDensity: VisualDensity.adaptivePlatformDensity,

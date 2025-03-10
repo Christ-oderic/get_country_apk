@@ -4,7 +4,7 @@ import 'package:get_country_apk/common/colors.dart';
 import 'package:get_country_apk/blocs/welcome/welcome_bloc.dart';
 import 'package:get_country_apk/screen/login_screen.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePageUtils extends StatelessWidget {
   final int index;
   final String title;
   final String imagePath;
@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
   final String buttonText;
   final PageController pageController;
 
-  const WelcomePage({
+  const WelcomePageUtils({
     super.key,
     required this.index,
     required this.title,
